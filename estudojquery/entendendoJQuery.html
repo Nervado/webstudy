@@ -14,6 +14,22 @@
     <div>2</div>
 
     <script>
-        // ...
+        // ...$. -- referencia Jquery ou $(function)
+        // .. $(selector)...
+        $('div').hide(5000).show(5000).fadeOut(5000)
+        console.log($('div').get(0))
+        console.log($.isEmptyObject({}))
+        console.log(jQuery.inArray(3, [1,2,3]))
+        // or jquery(selector..)
+        // na API jquery usa-se padrao de projeto decorator... o objeto tem o objeto
+        // original dentro de si e adiciona funcionalidades
+        // se o objeto interno for retornado as funcoes jquery nao
+        // poderao ser adicionadas
+        // get retorna o objeto do DOM
+        $.fn.fundoVerde = function(){
+            this.css('background-color','green')
+            return this //agora a funcao pode ser encadeada
+        }
+        $('body').fundoVerde().hide(1000) // nao funciona assim
     </script>
 </body>

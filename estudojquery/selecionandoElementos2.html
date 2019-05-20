@@ -82,5 +82,35 @@
     </footer>
     <script>
         // ...
+        const comBorda = {'border':'solid 8px orange'}
+        const semBorda = {'border':'none'}
+
+        $('a[href="#link3"').parent().css(comBorda).css(semBorda)
+        $('li:last').prev().css(comBorda).css(semBorda)
+        $('a[href="#link3"]').parent().next().css(comBorda).css(semBorda)
+
+        $('a[href="#link1"]').parents().css(comBorda).css(semBorda)
+        $('a[href="#link1"]').parentsUntil('body').css(comBorda).css(semBorda)
+
+        //..Pegando apenas os filhos diretos
+        $('main').children().css(comBorda).css(semBorda)
+
+        //.. Seleciona todos que atendem ao criterio
+        $('body').find('a').css(comBorda).css(semBorda)
+
+        //.. Passando o elemento do DOM
+        const elementoDOM = document.getElementsByClassName('menu')
+        $(elementoDOM).css(comBorda).css(semBorda)
+
+        // percorre os filhos de main..
+        // interacoes em Jquery retornam elementos do DOM e não 
+        // objetos Jquery
+        $('main').children().each((i,e) => $(e).css(comBorda))
+        // portanto os elementos retornados por each devem ser
+        // novamente passados ao jquery para usar suas funcionalidades
+        // dentro da call back
+        $('li').each((i,e) => $(e).css(comBorda))
+
+
     </script>
 </body>
