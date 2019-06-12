@@ -27,5 +27,30 @@
 
     <script>
         // ...
+        function exibirDadosEventos(e) {
+            $('#resultado').empty() //esvazia
+            const div1 = $('<div>')
+            const div2 = $('<div>')
+            $('#resultado').append(div1, div2)
+            div1.append(`target: ${e.target.id}`)
+            const rt = e.relatedTarget ? e.relatedTarget.tagName : null // Nem sempre existe
+            div1.append(`<br>relatedTarget: ${rt}`) //outro elemento relacionado com o evento
+            div1.append(`<br>type: ${e.type}`)
+            div1.append(`<br>which: ${e.which}`)
+            div1.append(`<br>metakey: ${e.metaKey}`)// comand ou tecla do windows
+            div2.append(`<br>pageX: ${e.pageX}`)
+            div2.append(`<br>pageY: ${e.pageY}`)
+            div2.append(`<br>clientX: ${e.clientX}`)
+            div2.append(`<br>clientY: ${e.clientY}`)
+
+            const obs = e.data ? e.data.obs : null
+            div2.append(`<br>obs:${obs}`) // Usando a propriedade adicionada
+        }
+
+        $('#div1,#div2').on('mouseenter mouseleave',
+            { obs: 'Funciona!' }, exibirDadosEventos) // Adicionando uma propriedade ao evento
+        $('input').keyup(exibirDadosEventos)
+
+
     </script>
 </body>

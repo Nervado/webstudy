@@ -22,5 +22,26 @@
     <div id="resultado2">?</div>
     <script>
         // ...
+        const alternarDestaque = () => $('#div1').toggleClass('destaque')
+        // $('#div1').hover(alternarDestaque,alternarDestaque) //com um parametro chama a primeira ao sair e mesma ao entrar
+        // $('#div1').hover(alternarDestaque, e=>{}) // nao faz nada ao sair...manter o efeeito do alternarDestaque
+        // Segunda funcao diferente da primeira
+        $('#div1').on('mouseenter mouseleave', alternarDestaque) //passa mais de um evento para registrar
+        // Evento tratado apenas uma vez
+        $('#div1').one('mouseenter', e => alert('Aviso Importante!')) //passa mais de um evento para registrar
+        // Duploclique
+        $('#div1').dblclick(e => { $('#div1').fadeOut(1000).fadeIn(1000) }) //passa mais de um evento para registrar
+        // Evento de redimensionamento da Tela
+        $(window).resize(function (e) {
+            const l = $(window).width()
+            const a = $(window).height()
+            $('#resultado1').html(`Largura: ${l} e Altura: ${a}`)
+        })
+
+        $(':input').select(e=>{
+            const inicio = e.target.selectionStart
+            const fim = e.target.selectionEnd
+            $('#resultado2').html(e.target.value.substring(inicio,fim))
+        })
     </script>
 </body>

@@ -29,5 +29,42 @@
 
     <script>
         // ...
+        function alterarLargura(valor, duracao, callback) {
+            $('div').animate({ width: `+=${valor}` }, duracao, callback)
+            return this
+        }
+
+        function moverDiagonal(valor, duracao, callback) {
+            $('div').animate({ top: `+=${valor}`, left: `+=${valor}` }, duracao, callback)
+            return this
+        }
+
+        function girar(valor, duracao, callback) {
+            $('div').animate({ transform: `+=${valor}` }, {
+                step: function (valor) {
+                    $(this).css('transform', `rotate(${valor}deg)`)
+                }, duration: duracao
+            }, 'linear',callback)
+            return this
+        }
+
+/*
+        alterarLargura(300,100,()=>{
+            alterarLargura(-300,'slow', ()=>{
+                moverDiagonal(300, 600, ()=>{
+                    girar(3300,3000)
+                })
+            })
+        })
+*/
+
+// Usando promisses
+
+
+        alterarLargura(300,100)
+            .then(alterarLargura(300,100))
+            .then(moverDiagonal(300,600))
+            .then(girar(3300,3000))
+
     </script>
 </body>
