@@ -28,43 +28,63 @@
     <div>Animar!</div>
 
     <script>
-        // ...
-        function alterarLargura(valor, duracao, callback) {
-            $('div').animate({ width: `+=${valor}` }, duracao, callback)
-            return this
-        }
 
-        function moverDiagonal(valor, duracao, callback) {
-            $('div').animate({ top: `+=${valor}`, left: `+=${valor}` }, duracao, callback)
-            return this
-        }
-
-        function girar(valor, duracao, callback) {
-            $('div').animate({ transform: `+=${valor}` }, {
-                step: function (valor) {
-                    $(this).css('transform', `rotate(${valor}deg)`)
-                }, duration: duracao
-            }, 'linear',callback)
-            return this
-        }
-
-/*
-        alterarLargura(300,100,()=>{
-            alterarLargura(-300,'slow', ()=>{
-                moverDiagonal(300, 600, ()=>{
-                    girar(3300,3000)
-                })
+        function alterarLargura(valor, duracao) {
+            return new Promise(() => {
+                $('div').animate({ width: `+=${valor}` }, duracao)
             })
-        })
-*/
+        }
 
-// Usando promisses
+        function moverDiagonal(valor, duracao) {     
+                $('div').animate({ top: `+=${valor}`, left: `+=${valor}` }, duracao)           
+        }
 
+        function girar(valor, duracao) {            
+                $('div').animate({ transform: `+=${valor}` }, {
+                    step: function (valor) {
+                        $(this).css('transform', `rotate(${valor}deg)`)
+                    }, duration: duracao
+                }, 'linear')            
+        }
 
-        alterarLargura(300,100)
-            .then(alterarLargura(300,100))
-            .then(moverDiagonal(300,600))
+        alterarLargura(300, 100)
+            .then(alterarLargura(-300, 'slow'))
+            .then(moverDiagonal(300, 600))
             .then(girar(3300,3000))
+
+
+    
+      
+        /*
+                function alterarLargura(valor, duracao, callback) {
+                    $('div').animate({ width: `+=${valor}` }, duracao, callback)
+                    return this
+                }
+
+                function moverDiagonal(valor, duracao, callback) {
+                    $('div').animate({ top: `+=${valor}`, left: `+=${valor}` }, duracao, callback)
+                    return this
+                }
+
+                function girar(valor, duracao, callback) {
+                    $('div').animate({ transform: `+=${valor}` }, {
+                        step: function (valor) {
+                            $(this).css('transform', `rotate(${valor}deg)`)
+                        }, duration: duracao
+                    }, 'linear',callback)
+                    return this
+                }
+                */
+
+        /*
+                alterarLargura(300,100,()=>{
+                    alterarLargura(-300,'slow', ()=>{
+                        moverDiagonal(300, 600, ()=>{
+                            girar(3300,3000)
+                        })
+                    })
+                })
+        */
 
     </script>
 </body>
