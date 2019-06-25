@@ -1,11 +1,6 @@
 {
   "users": [
     {
-      "id": 1,
-      "name": "Evandro Abreu",
-      "email": "evandro@gmail.com"
-    },
-    {
       "id": 2,
       "name": "Marcos Paulo",
       "email": "antropologo@gmail.com"
@@ -14,6 +9,11 @@
       "name": "Evandro",
       "email": "evandro@gmail.com",
       "id": 3
+    },
+    {
+      "name": "Paula",
+      "email": "piranha@gmail.com",
+      "id": 4
     }
   ]
 }
