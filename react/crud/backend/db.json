@@ -1,18 +1,18 @@
 {
   "users": [
     {
-      "id": 2,
-      "name": "Marcos Paulo",
-      "email": "antropologo@gmail.com"
+      "name": "Evandro",
+      "email": "abreu@yahoo.com.br",
+      "id": 2
     },
     {
-      "name": "Evandro",
-      "email": "evandro@gmail.com",
+      "name": "Jose ",
+      "email": "ze@bol.com.br",
       "id": 3
     },
     {
-      "name": "Paula",
-      "email": "piranha@gmail.com",
+      "name": "Jose ",
+      "email": "ze@bol.com.br",
       "id": 4
     }
   ]

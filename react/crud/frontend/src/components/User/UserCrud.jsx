@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Main from '../template/Main'
-import axios from 'axios'
+import axios from 'axios' // Requisições ajax
 
 const headerProps = {
     icon: 'users',
@@ -8,7 +8,8 @@ const headerProps = {
     subtitle: 'Cadastro de usuários: Incluir, Listar, Alterar e Excluir'
 }
 
-const baseUrl = 'http://localhost:3001/users'
+const baseUrl = 'http://localhost:3001/users' // URl base
+
 const initialState = {
     user: { name: '', email: '' },
     list: []
@@ -16,20 +17,25 @@ const initialState = {
 
 export default class UserCrud extends Component {
 
-    state = { ...initialState }
+    state = { ...initialState } // Inicialização do estao
 
+    // Quando o componente for exibido na tela, fazer chamada no backend para exibir a lista
+    // O componente vai ser exibido....
+    // So é chamada um vez, no inicio do carregamento do conteudo
     componentWillMount() {
         axios(baseUrl).then(resp => {
             this.setState({ list: resp.data })
         })
     }
 
+    // Limpar o formulário, limpar o user
     clear() {
         this.setState({ user: initialState.user })
     }
 
+    // Incluir ou alterar um usuário existente ..post incluir, alterar put
     save() {
-        const user = this.state.user
+        const user = this.state.user // Obter o usuário
         const method = user.id ? 'put' : 'post'
         const url = user.id ? `${baseUrl}/${user.id}` : baseUrl
         axios[method](url, user)
@@ -37,16 +43,17 @@ export default class UserCrud extends Component {
                 const list = this.getUpdatedList(resp.data)
                 this.setState({ user: initialState.user, list })
             })
-    }
+    }lks
 
-    getUpdatedList(user) {
+
+    getUpdatedList(user, add=true) {
         const list = this.state.list.filter(u => u.id !== user.id)
-        if (user) list.unshift(user)
+        if (add) list.unshift(user)
         return list
     }
 
     updateField(event) {
-        const user = { ...this.state.user }
+        const user = { ...this.state.user } // Alterar ...clona-se o objeto
         user[event.target.name] = event.target.value
         this.setState({ user })
     }
@@ -103,7 +110,7 @@ export default class UserCrud extends Component {
 
     remove(user) {
         axios.delete(`${baseUrl}/${user.id}`).then(resp => {
-            const list = this.getUpdatedList(null)
+            const list = this.getUpdatedList(user, false)
             this.setState({ list })
         })
     }
@@ -134,11 +141,11 @@ export default class UserCrud extends Component {
                     <td>{user.email}</td>
                     <td>
                         <button className="btn btn-warning"
-                            onClick = {() => this.load(user)}>
+                            onClick={() => this.load(user)}>
                             <i className="fa fa-pencil"></i>
                         </button>
                         <button className="btn btn-danger ml-2"
-                            onClick = {() => this.remove(user)}>
+                            onClick={() => this.remove(user)}>
                             <i className="fa fa-trash"></i>
                         </button>
                     </td>
