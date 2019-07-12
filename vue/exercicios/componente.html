@@ -1,15 +1,61 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <title>Componente</title>
     <link rel="stylesheet" href="/css/estilo.css">
     <script src="/js/vue.min.js"></script>
 </head>
-<body class="exercicio">
 
+<body class="exercicio">
+    <div id="app">
+        <saudacao nome="Ana"></saudacao>
+        <saudacao nome="Evandro"></saudacao>
+
+    </div>
     <script>
-        // ...
+        // Uso de Vue component
+        Vue.component('saudacao', {
+            // itens da instancia vue
+            props: ['nome'],
+            data: 
+                function() {
+                    return {
+                        contador: 0
+                    }
+                }
+            ,
+            methods: {
+                addCounter() {
+                    return this.contador++
+                }
+            },
+            template: `
+            <Fragment>
+                <div>Bom dia {{nome}} {{contador}}!</div>
+                <button @click = "addCounter">Add</button>
+            <Fragment>    
+            `
+        })
+
+
+        new Vue({
+            el: "#app"
+        })
+
     </script>
+    <style>
+        button {
+            width: 100px;
+            height: 15px;
+            font-size: 10px;   
+            text-align: center;
+            background-color: dodgerblue;  
+            padding: 0%;   
+            text-justify: auto;
+        }
+    </style>
 </body>
+
 </html>
