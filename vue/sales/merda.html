@@ -1,0 +1,23 @@
+<table class="mt-5 table" v-if="salesByProduct">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr v-for="(sale, index) in salesByProduct">
+            <td>#{{ index + 1 }}</td>
+            <td>{{ sale.name }}</td>
+            <td v-money="'R$'">{{ sale.value }}</td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>+</td>
+            <td>Total</td>
+            <td v-money="'R$'">{{ calculateTotal(salesByProduct) }}</td>
+        </tr>
+    </tfoot>
+</table>
