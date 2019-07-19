@@ -1,0 +1,14 @@
+// remove uso
+db.estados.count()
+
+// Excluir estados sem atributo populacao limitado a 1
+db.estados.remove({populacao: {$exists : true}}, 1 )
+
+// Modificar populaca do rio de janeiro
+db.estados.update({sigla: 'RJ'},{$set: {populacao : 16720000}})
+
+// Excluir estado com populacao menor que 20 milhoes
+db.estados.remove({populacao: {$lt : 20000000}})
+
+//obs.: Boa pratica passar o 1 como parametro para garantir que se der
+//merda, o erro afeta apenas um item.

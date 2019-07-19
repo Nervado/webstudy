@@ -1,0 +1,32 @@
+// Basica
+db.estados.find().pretty()
+
+// findOne
+db.estados.findOne()
+
+// finOnde com filtro
+db.estados.findOne({sigla: 'RJ'})
+
+// find com filtro
+db.estados.find({sigla: 'RJ'}).pretty()
+
+// operadores dentro do filtro
+db.estados.find({$or:[{sigla: 'RJ'},{sigla:'AC'}]}).pretty()
+
+// verifica a existência do atributo
+db.estados.find({populacao: {$exists: true}}).pretty()
+
+// consultas paginadas pulando registros
+db.estados.find().skip(1).pretty()
+
+// consultas com quantidades limitadas de registros
+db.estados.find().skip(1).limit(2).pretty()
+
+// contador de registros
+db.estados.count()
+
+// consulta com retorno especifico de atributos sem _id
+db.estados.find({sigla: 'SP'},{nome:1,sigla:1,_id: 0})
+
+/ retornando atributos especificos sem o nome do objeto
+db.estados.find({sigla: 'SP'},{'cidades.nome':1, _id: 0})

@@ -1,0 +1,22 @@
+// Comandos básicos MongoDB 
+
+// Tab mostra histórico de comandos
+
+// Cls limpa console
+// Iniciar client 
+mongo 
+
+// Exibir banco de dados 
+show dbs
+
+// Usar banco não declarado use <nome_do_banco>
+use 34s0ft
+
+// Criar Collection
+db.createCollection('estados')
+
+// Dropar Collection
+db.Estados.drop()
+
+
+// Obs.: É case sensitive

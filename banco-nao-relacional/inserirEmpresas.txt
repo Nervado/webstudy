@@ -1,0 +1,29 @@
+// Criar empreasas
+
+//ObjectId("5d3091659ab6010ae335480a") Sao Paulo,
+db.empresas.insert({
+    nome: "Bradesco",
+    estadoId: ObjectId("5d3091659ab6010ae335480a")
+})
+
+// ObjectId("5d3091659ab6010ae3354809") Sorocaba
+db.empresas.insert({
+    nome: "Vale",
+    cidadeId: ObjectId("5d3091659ab6010ae3354809")
+})
+
+
+// Inserir o Rio de Janeiro de volta
+db.estados.insert({
+    nome:'Rio de Janeiro', 
+    sigla: 'RJ', 
+    regiao: 'Sudeste',
+    populacao: 6500000,
+    Cidades: [{
+        _id : ObjectId(),
+        nome: 'Niterói',
+        area: 133.9,
+        popupalacao: 4857562
+    }]
+})
+

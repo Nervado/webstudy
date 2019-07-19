@@ -1,0 +1,17 @@
+// consultas usando unwind (desenrrolar)
+db.estados.aggregate([
+    {$match: {"Cidades.nome": "Sorocaba"}},
+    {$unwind: "$Cidades"}
+]).pretty()
+
+// geradas três copias do objeto com unwind
+
+db.estados.aggregate([
+    {$match: {"Cidades.nome": "Sorocaba"}},
+    {$unwind: "$Cidades"},
+    {$match: {"Cidades.nome": "Sorocaba"}},
+    {$project:{ _id: "$Cidades._id"}}
+
+]).pretty()
+
+// Usando o match para retirar "Sorocaba" e usar o project, interpolando o _id

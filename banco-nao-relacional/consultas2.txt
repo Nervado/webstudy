@@ -1,0 +1,21 @@
+// Agregacao
+db.estados.aggregate([
+    { $project : {nome:1 ,"Cidades.nome": 1, _id: 0 }}
+])
+
+// Agregacao com operacao
+db.estados.aggregate([
+    { $project: {populacao: {$sum: "$Cidades.popupalacao"}, sigla: 1, _id: 0}}
+])
+
+// Agregacao com operacao e agrupamento
+db.estados.aggregate([
+    { $project: {populacao: {$sum: "$Cidades.popupalacao"}, sigla: 1, _id: 0}},
+    { $group: {_id: null, populacaoTotal : { $sum: "$populacao"}}},
+])
+
+db.estados.aggregate([
+    { $project: {populacao: {$sum: "$Cidades.popupalacao"}, sigla: 1, _id: 0}},
+    { $group: {_id: null, populacaoTotal : { $sum: "$populacao"}}},
+    { $project: {_id: 0, populacaoTotal : 1}}
+])

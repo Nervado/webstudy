@@ -1,0 +1,8 @@
+// Aggregation Pipeline Stages
+db.collection.aggregate
+
+// match ... similar ao where .. filtra os documentos
+
+// project ... definie o que será retornado
+
+// adicionar novos campos.. addFields

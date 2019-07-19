@@ -1,0 +1,48 @@
+// Comandos de inserção de dados
+
+// insert
+db.estados.insert({nome: 'Acre',sigla: 'AC', regiao: 'Norte'})
+
+// save
+db.estados.save({nome: 'Alagoas',sigla: 'AL', regiao: 'Nordeste'})
+
+// inserção com propriedades adicionais 
+db.estados.insert({nome: 'Rio Grande do Norte',sigla: 'RN', regiao: 'Nordeste',populacao: 3409000})
+
+// buscar ou exibir entradas
+db.estados.find()
+
+// Modificar para exibir como JSON
+db.estados.find().pretty()
+
+// Para quebrar a linha ao inserir comando bastar abrir as chaves
+db.estados.insert({
+    ...nome:'Rio de Janeiro', sigla: 'RJ', populacao: 6500000)}
+
+// ajuda
+db.help()
+
+db.estados.insert({
+    nome: 'São Paulo',
+    sigla: 'SP',
+    regiao: 'Sudeste',
+    Cidades : [
+        {
+            _id : ObjectId(),
+            nome: 'Campinas',
+            area: 795.7,
+            prefeito: 'Jonas Donizette',
+            popupalacao: 1081000
+            },
+        {   
+            _id : ObjectId(),
+            nome: 'Guarulhos',
+            popupalacao: 1325000},
+        {
+            _id : ObjectId(),
+            nome: 'Sorocaba',
+            distanciaCapital: 87,
+            popupalacao: 644919
+        }
+        ]
+})
